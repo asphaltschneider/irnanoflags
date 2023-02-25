@@ -42,7 +42,7 @@ jobs:
       # Build python script into a stand-alone exe
       - uses: jimkring/python-script-to-exe@v0.2.0
         with:
-          script-name: irnanoflags.py
+          script-name: src/irnanoflags.py
           onefile: true
           access-token: ${{ secrets.NUITKA_COMMERCIAL_ACCESS_TOKEN }}
           # macos-create-app-bundle: ${{ runner.os == 'macOS' }}
@@ -56,3 +56,4 @@ jobs:
             build/*.exe
             build/*.bin
             build/*.app/**/*
+            src/*.ini
