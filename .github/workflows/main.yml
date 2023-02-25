@@ -35,7 +35,4 @@ jobs:
           name: irnanoflags
           path: src/dist/windows # or path/to/artifact
           
-      - uses: actions/upload-artifact@v2
-        with:
-          name: irnanoflags
-          path: src/config_example.yaml
+
