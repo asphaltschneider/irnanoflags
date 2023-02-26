@@ -150,43 +150,44 @@ def irtcprMain(r, stop):
         except Exception as e:
             logger.critical("iRacingWorker - Exception while checking iracing: %s" % (e,))
 
-        session_flag = ir['SessionFlags']
-        if session_flag:
-            for flag in IRacingMemoryFlagType:
-                if IRacingMemoryFlagType(flag).value & session_flag == IRacingMemoryFlagType(flag).value:
-                    memory_flags.append(flag)
+        if state.ir_connected:
+            session_flag = ir['SessionFlags']
+            if session_flag:
+                for flag in IRacingMemoryFlagType:
+                    if IRacingMemoryFlagType(flag).value & session_flag == IRacingMemoryFlagType(flag).value:
+                        memory_flags.append(flag)
 
-                    if IRacingMemoryFlagType.blue in memory_flags:
-                        logger.info("blue flag")
-                        state.SET_NANOLEAF = config["EFFECTS"]["blue"]
-                    if IRacingMemoryFlagType.repair in memory_flags:
-                        logger.info("meatball flag")
-                        state.SET_NANOLEAF = config["EFFECTS"]["meatball"]
-                    if IRacingMemoryFlagType.black in memory_flags:
-                        logger.info("black flag")
-                        state.SET_NANOLEAF = config["EFFECTS"]["black"]
-                    if IRacingMemoryFlagType.yellow in memory_flags or IRacingMemoryFlagType.yellow_waving in memory_flags:
-                        logger.info("yellow flag")
-                        state.SET_NANOLEAF = config["EFFECTS"]["yellow"]
-                    if IRacingMemoryFlagType.caution in memory_flags or IRacingMemoryFlagType.yellow_waving in memory_flags:
-                        logger.info("caution flag")
-                        state.SET_NANOLEAF = config["EFFECTS"]["caution"]
-                    if IRacingMemoryFlagType.caution_waving in memory_flags or IRacingMemoryFlagType.yellow_waving in memory_flags:
-                        logger.info("caution_waving flag")
-                        state.SET_NANOLEAF = config["EFFECTS"]["caution_waving"]
-                    if IRacingMemoryFlagType.green in memory_flags:
-                        logger.info("green flag")
-                        state.SET_NANOLEAF = config["EFFECTS"]["green"]
-                    if IRacingMemoryFlagType.white in memory_flags:
-                        logger.info("white flag")
-                        state.SET_NANOLEAF = config["EFFECTS"]["white"]
-                    if IRacingMemoryFlagType.checkered in memory_flags:
-                        logger.info("checkered flag")
-                        state.SET_NANOLEAF = config["EFFECTS"]["checkered"]
-                    if IRacingMemoryFlagType.red in memory_flags:
-                        logger.info("red flag")
-                        state.SET_NANOLEAF = config["EFFECTS"]["red"]
-            memory_flags = []
+                        if IRacingMemoryFlagType.blue in memory_flags:
+                            logger.info("blue flag")
+                            state.SET_NANOLEAF = config["EFFECTS"]["blue"]
+                        if IRacingMemoryFlagType.repair in memory_flags:
+                            logger.info("meatball flag")
+                            state.SET_NANOLEAF = config["EFFECTS"]["meatball"]
+                        if IRacingMemoryFlagType.black in memory_flags:
+                            logger.info("black flag")
+                            state.SET_NANOLEAF = config["EFFECTS"]["black"]
+                        if IRacingMemoryFlagType.yellow in memory_flags or IRacingMemoryFlagType.yellow_waving in memory_flags:
+                            logger.info("yellow flag")
+                            state.SET_NANOLEAF = config["EFFECTS"]["yellow"]
+                        if IRacingMemoryFlagType.caution in memory_flags or IRacingMemoryFlagType.yellow_waving in memory_flags:
+                            logger.info("caution flag")
+                            state.SET_NANOLEAF = config["EFFECTS"]["caution"]
+                        if IRacingMemoryFlagType.caution_waving in memory_flags or IRacingMemoryFlagType.yellow_waving in memory_flags:
+                            logger.info("caution_waving flag")
+                            state.SET_NANOLEAF = config["EFFECTS"]["caution_waving"]
+                        if IRacingMemoryFlagType.green in memory_flags:
+                            logger.info("green flag")
+                            state.SET_NANOLEAF = config["EFFECTS"]["green"]
+                        if IRacingMemoryFlagType.white in memory_flags:
+                            logger.info("white flag")
+                            state.SET_NANOLEAF = config["EFFECTS"]["white"]
+                        if IRacingMemoryFlagType.checkered in memory_flags:
+                            logger.info("checkered flag")
+                            state.SET_NANOLEAF = config["EFFECTS"]["checkered"]
+                        if IRacingMemoryFlagType.red in memory_flags:
+                            logger.info("red flag")
+                            state.SET_NANOLEAF = config["EFFECTS"]["red"]
+                memory_flags = []
 
         time.sleep(1)
     logger.info("Main - Thread ends")
