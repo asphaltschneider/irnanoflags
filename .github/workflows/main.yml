@@ -53,5 +53,5 @@ jobs:
         with:
           name: iRNanoFlags
           path: |
-            *.exe
-            *.ini
+            build/*.exe
+            build/*.ini
